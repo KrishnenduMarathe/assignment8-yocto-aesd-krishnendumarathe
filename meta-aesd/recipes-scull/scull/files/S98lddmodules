@@ -32,7 +32,7 @@ fi
 # invoke insmod with all arguments we got
 # and use a pathname, as insmod doesn't look in . by default
 echo "-> Load $module module, exit on failure"
-insmod $MODLOC/$module.ko $* || exit 1
+insmod $MODLOC/$module.ko || exit 1
 
 # retrieve major number
 major=$(awk "\$2==\"$module\" {print \$1}" /proc/devices)
@@ -84,7 +84,7 @@ device="faulty"
 mode="664"
 
 echo "-> Load $module module, exit on failure"
-insmod $MODLOC/$module.ko $* || exit 1
+insmod $MODLOC/$module.ko || exit 1
 
 major=$(awk "\$2==\"$module\" {print \$1}" /proc/devices)
 if [ ! -z ${major} ]; then
@@ -100,7 +100,7 @@ fi
 module="hello"
 
 echo "-> Load $module module, exit on failure"
-insmod $MODLOC/$module.ko $* || exit 1
+insmod $MODLOC/$module.ko || exit 1
 
 ;;
 
@@ -113,7 +113,7 @@ device="scull"
 
 # invoke rmmod with all arguments we got
 echo "-> Unload $module module, exit on failure"
-rmmod $module $* || exit 1
+rmmod $module || exit 1
 
 # Remove stale nodes
 

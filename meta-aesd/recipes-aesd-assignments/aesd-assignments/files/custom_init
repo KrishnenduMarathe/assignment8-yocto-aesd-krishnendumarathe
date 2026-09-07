@@ -1,0 +1,19 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:          aesd device and aesdsocket
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Setup /dev/aesdchar & aesdsocket on boot
+### END INIT INFO
+
+echo "Combined starter start..."
+
+/etc/init.d/aesdchar $1
+
+/etc/init.d/aesdsocket $1
+
+echo "Combined starter end..."
+
